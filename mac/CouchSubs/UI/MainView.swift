@@ -21,6 +21,12 @@ struct MainView: View {
                 LogoView(size: 44)
                 Text(verbatim: "CouchSubs").font(.csTitle)
                 Spacer()
+                Button { model.showTrophies = true } label: {
+                    Image(systemName: "trophy").font(.system(size: 18, weight: .medium))
+                }
+                .buttonStyle(.plain)
+                .foregroundStyle(Color.csSecondary)
+                .help(Text("Trophies"))
                 Button { model.showSettings = true } label: {
                     Image(systemName: "gearshape").font(.system(size: 18, weight: .medium))
                 }
@@ -85,5 +91,6 @@ struct MainView: View {
         .padding(Theme.space("xxl"))
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .sheet(isPresented: $model.showSettings) { SettingsView().appSurface() }
+        .sheet(isPresented: $model.showTrophies) { TrophiesView().appSurface() }
     }
 }

@@ -19,6 +19,8 @@ enum StoreKey {
     static let settings = "settings"
     /// Kullanıcının DeepL anahtarı (isteğe bağlı çevrimiçi çeviri).
     static let deepLKey = "deepLKey"
+    /// Refresh token of the player's own PSN account, used only for the Trophies tab.
+    static let trophyLogin = "trophyLogin"
 }
 
 /// Kalıcı ayarlar (Anahtarlık değil, sıradan tercihler).
@@ -385,9 +387,12 @@ final class AppModel {
     var lastFrame: CGImage?
     var showAbout = false
     var showSettings = false
+    var showTrophies = false
 
     private let services: AppServices
     private let store: AppStore
+    /// Trophies tab: the player's own PSN trophies.
+    let trophies: TrophyModel
     private let defaults: UserDefaults
     /// Çalışan okuma hattının dilleri.
     private(set) var activeLanguages: (source: String, target: String)?
@@ -414,6 +419,7 @@ final class AppModel {
     init(services: AppServices = LiveServices(), store: AppStore = KeychainStore(), defaults: UserDefaults = .standard) {
         self.services = services
         self.store = store
+        trophies = TrophyModel(store: store)
         self.defaults = defaults
         let accountId = store.load(Data.self, for: StoreKey.accountId)
         let console = store.load(RegisteredConsole.self, for: StoreKey.console)

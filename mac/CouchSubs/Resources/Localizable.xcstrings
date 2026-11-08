@@ -337,6 +337,22 @@
         }
       }
     },
+    "All trophies": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All trophies"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tüm kupalar"
+          }
+        }
+      }
+    },
     "An LG TV with the CouchSubs TV app": {
       "localizations": {
         "en": {
@@ -801,6 +817,22 @@
         }
       }
     },
+    "Could not reach PlayStation Network.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not reach PlayStation Network."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PlayStation Network'e ulaşılamadı."
+          }
+        }
+      }
+    },
     "Could not translate this area.": {
       "localizations": {
         "en": {
@@ -1057,6 +1089,22 @@
         }
       }
     },
+    "Easiest next": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Easiest next"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sıradaki en kolaylar"
+          }
+        }
+      }
+    },
     "English": {
       "localizations": {
         "en": {
@@ -1169,6 +1217,22 @@
         }
       }
     },
+    "Games": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Games"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oyunlar"
+          }
+        }
+      }
+    },
     "German": {
       "localizations": {
         "en": {
@@ -1181,6 +1245,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Almanca"
+          }
+        }
+      }
+    },
+    "Hidden trophy": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hidden trophy"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gizli kupa"
           }
         }
       }
@@ -1425,6 +1505,22 @@
         }
       }
     },
+    "Latest trophies": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Latest trophies"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Son kupalar"
+          }
+        }
+      }
+    },
     "Left": {
       "localizations": {
         "en": {
@@ -1453,6 +1549,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Deneyelim"
+          }
+        }
+      }
+    },
+    "Level %d": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Level %d"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seviye %d"
           }
         }
       }
@@ -1581,6 +1693,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Menü adları markaya göre biraz değişir. Uygulama TV'de zaten kuruluysa bu adımı geçebilirsiniz."
+          }
+        }
+      }
+    },
+    "Missing trophies that most players have.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Missing trophies that most players have."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oyuncuların çoğunun aldığı, sende eksik olan kupalar."
           }
         }
       }
@@ -2353,6 +2481,22 @@
         }
       }
     },
+    "Sign in to PlayStation Network": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign in to PlayStation Network"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PlayStation Network'e giriş yap"
+          }
+        }
+      }
+    },
     "Sign in to PlayStation Network first.": {
       "localizations": {
         "en": {
@@ -2401,6 +2545,54 @@
         }
       }
     },
+    "Sign in with your own PSN account": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign in with your own PSN account"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kendi PSN hesabınla giriş yap"
+          }
+        }
+      }
+    },
+    "Sign in with your own PlayStation account to see your level, your games and every trophy, with how rare each one is. This is separate from the Remote Play account; only your trophies are read.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign in with your own PlayStation account to see your level, your games and every trophy, with how rare each one is. This is separate from the Remote Play account; only your trophies are read."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seviyeni, oyunlarını ve her kupayı ne kadar nadir olduğuyla görmek için kendi PlayStation hesabınla giriş yap. Bu, Remote Play hesabından ayrıdır; yalnız kupaların okunur."
+          }
+        }
+      }
+    },
+    "Sign out": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign out"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çıkış yap"
+          }
+        }
+      }
+    },
     "Sign-in did not complete. Please try again.": {
       "localizations": {
         "en": {
@@ -2413,6 +2605,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Giriş tamamlanmadı. Lütfen tekrar deneyin."
+          }
+        }
+      }
+    },
+    "Sign-in failed. Try again.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign-in failed. Try again."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Giriş yapılamadı. Tekrar dene."
           }
         }
       }
@@ -3297,6 +3505,22 @@
         }
       }
     },
+    "Trophies": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trophies"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kupalar"
+          }
+        }
+      }
+    },
     "Try again": {
       "localizations": {
         "en": {
@@ -3613,6 +3837,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Gerekenler:"
+          }
+        }
+      }
+    },
+    "Your trophies": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your trophies"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kupaların"
           }
         }
       }
