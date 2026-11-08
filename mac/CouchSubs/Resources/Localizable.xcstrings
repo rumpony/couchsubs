@@ -1057,6 +1057,22 @@
         }
       }
     },
+    "Earlier subtitles": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Earlier subtitles"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Önceki altyazılar"
+          }
+        }
+      }
+    },
     "English": {
       "localizations": {
         "en": {

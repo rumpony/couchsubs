@@ -80,6 +80,28 @@ struct MainView: View {
                         .fixedSize(horizontal: false, vertical: true)
                 }
             }
+            if model.history.entries.count > 1 {
+                Card(title: "Earlier subtitles") {
+                    ScrollView {
+                        LazyVStack(alignment: .leading, spacing: Theme.space("m")) {
+                            ForEach(model.history.entries.dropFirst()) { entry in
+                                VStack(alignment: .leading, spacing: Theme.space("xs")) {
+                                    Text(verbatim: entry.translation)
+                                        .font(.csBody)
+                                        .fixedSize(horizontal: false, vertical: true)
+                                    Text(verbatim: entry.source)
+                                        .font(.csCallout)
+                                        .foregroundStyle(Color.csSecondary)
+                                        .fixedSize(horizontal: false, vertical: true)
+                                }
+                                .textSelection(.enabled)
+                            }
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                    .frame(maxHeight: 220)
+                }
+            }
             Spacer(minLength: 0)
         }
         .padding(Theme.space("xxl"))

@@ -381,6 +381,8 @@ final class AppModel {
     var tvClients = 0
     var lastSource = ""
     var lastTranslation = ""
+    /// Bu oturumda çevrilen altyazılar; kaçırılan satır ana pencereden yeniden okunur.
+    var history = SubtitleHistory()
     var translatorStatus: TranslatorStatus = .ready
     var lastFrame: CGImage?
     var showAbout = false
@@ -809,6 +811,7 @@ final class AppModel {
         pipeline.onPair = { [weak self, weak pipeline] source, translation in
             self?.lastSource = source
             self?.lastTranslation = translation
+            self?.history.add(source: source, translation: translation)
             if let box = pipeline?.lastBox { self?.lastSubtitleBox = box }
         }
         // Dil paketi bu arada indirilmiş olabilir; her çeviri sonucu durumu günceller.
