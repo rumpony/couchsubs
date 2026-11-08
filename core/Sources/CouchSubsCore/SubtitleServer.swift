@@ -143,6 +143,13 @@ public final class SubtitleServer: @unchecked Sendable {
         return ["left": round(box.left), "top": round(box.top), "right": round(box.right), "bottom": round(box.bottom)]
     }
 
+    /// Shows a trophy card on the TV for a few seconds; it does not touch the subtitle.
+    public func sendTrophy(_ trophy: EarnedTrophy, durationMs: Int = 6000) {
+        var json: [String: Any] = ["name": trophy.name, "grade": trophy.grade.rawValue, "game": trophy.game, "duration": durationMs]
+        if let icon = trophy.iconURL?.absoluteString { json["icon"] = icon }
+        broadcast(event: "trophy", json: json)
+    }
+
     public func clear() {
         broadcast(event: "clear", json: [:])
     }

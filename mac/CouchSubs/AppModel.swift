@@ -19,6 +19,8 @@ enum StoreKey {
     static let settings = "settings"
     /// Kullanıcının DeepL anahtarı (isteğe bağlı çevrimiçi çeviri).
     static let deepLKey = "deepLKey"
+    /// npsso cookie of the player's own PSN account, used only to read trophies.
+    static let trophyCookie = "trophyCookie"
 }
 
 /// Kalıcı ayarlar (Anahtarlık değil, sıradan tercihler).
@@ -30,6 +32,8 @@ struct UserSettings: Codable, Equatable {
     var dubbing = DubbingSettings()
     /// Anahtar girildiyse çeviri DeepL'le yapılır; kapalıysa ya da DeepL'e ulaşılamazsa Apple'ın cihaz üstü çevirisi.
     var onlineTranslation = false
+    /// Shows trophies earned while playing on the TV (needs the player's npsso cookie).
+    var trophyAlerts = false
 
     init() {}
 
@@ -43,6 +47,7 @@ struct UserSettings: Codable, Equatable {
         targetLanguage = try values.decodeIfPresent(String.self, forKey: .targetLanguage) ?? defaults.targetLanguage
         dubbing = (try? values.decodeIfPresent(DubbingSettings.self, forKey: .dubbing)) ?? defaults.dubbing
         onlineTranslation = try values.decodeIfPresent(Bool.self, forKey: .onlineTranslation) ?? defaults.onlineTranslation
+        trophyAlerts = try values.decodeIfPresent(Bool.self, forKey: .trophyAlerts) ?? defaults.trophyAlerts
     }
 }
 
@@ -425,6 +430,7 @@ final class AppModel {
         settings = defaults.data(forKey: StoreKey.settings).flatMap { try? JSONDecoder().decode(UserSettings.self, from: $0) } ?? UserSettings()
         step = ready ? .done : .welcome
         deepLKeySaved = store.load(String.self, for: StoreKey.deepLKey)?.isEmpty == false
+        trophyCookieSaved = store.load(String.self, for: StoreKey.trophyCookie)?.isEmpty == false
         server.onClientsChanged = { [weak self] count in self?.tvClients = count }
     }
 
@@ -723,6 +729,7 @@ final class AppModel {
         keeper.start(interval: .seconds(5))
         self.keeper = keeper
         Task { await refreshTVApp() }
+        startTrophyWatch()
 
         // Mac uykudan uyanınca bağlantıları hemen yenile.
         wakeObserver = NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.didWakeNotification, object: nil, queue: .main) { [weak self] _ in
@@ -744,6 +751,58 @@ final class AppModel {
     @ObservationIgnored private var screenHotkey: ScreenHotkey?
     /// Süren "ekranı çevir" işi; yeniden basılınca iptal edilir.
     @ObservationIgnored private var screenTask: Task<Void, Never>?
+    @ObservationIgnored private var trophyTask: Task<Void, Never>?
+
+    // MARK: - Trophies
+
+    /// Whether an npsso cookie is saved (the cookie itself never goes back to the UI).
+    var hasTrophyCookie: Bool { trophyCookieSaved }
+    private var trophyCookieSaved = false
+    /// Set when PSN rejects the saved cookie; the settings card asks for a new one.
+    var trophyCookieExpired = false
+
+    /// Checks the cookie with PSN; when it works it is saved and trophy alerts are turned on.
+    func setTrophyCookie(_ cookie: String) async -> Bool {
+        let cookie = cookie.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !cookie.isEmpty, (try? await PSNTrophies(npsso: cookie).verify()) != nil else { return false }
+        store.save(cookie, for: StoreKey.trophyCookie)
+        trophyCookieSaved = true
+        trophyCookieExpired = false
+        settings.trophyAlerts = true
+        if isRunning { startTrophyWatch() }
+        return true
+    }
+
+    func removeTrophyCookie() {
+        store.remove(StoreKey.trophyCookie)
+        trophyCookieSaved = false
+        trophyCookieExpired = false
+        settings.trophyAlerts = false
+        trophyTask?.cancel()
+        trophyTask = nil
+    }
+
+    /// Polls PSN once a minute while translating and sends each new trophy to the TV.
+    private func startTrophyWatch() {
+        trophyTask?.cancel()
+        trophyTask = nil
+        guard settings.trophyAlerts, let cookie = store.load(String.self, for: StoreKey.trophyCookie), !cookie.isEmpty else { return }
+        let trophies = PSNTrophies(npsso: cookie)
+        let server = self.server
+        trophyTask = Task { [weak self] in
+            while !Task.isCancelled {
+                do {
+                    for trophy in try await trophies.poll() { server.sendTrophy(trophy) }
+                } catch PSNTrophies.TrophyError.signInExpired {
+                    self?.trophyCookieExpired = true
+                    return
+                } catch {
+                    // Network or PSN hiccup: try again on the next round.
+                }
+                try? await Task.sleep(for: .seconds(60))
+            }
+        }
+    }
     /// TV'deki ekran çevirilerinin kalkacağı an; bu andan önce yeniden basmak onları kaldırır.
     @ObservationIgnored private var screenShownUntil = Date.distantPast
 
@@ -886,6 +945,8 @@ final class AppModel {
         screenHotkey?.enabled = false
         screenTask?.cancel()
         screenTask = nil
+        trophyTask?.cancel()
+        trophyTask = nil
         if Date() < screenShownUntil { server.clearScreen() }
         screenShownUntil = .distantPast
         if let dubber {

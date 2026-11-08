@@ -5,6 +5,10 @@
 
   var TEXTS = {
     tr: {
+      trophy_bronze: 'Bronz kupa',
+      trophy_silver: 'Gümüş kupa',
+      trophy_gold: 'Altın kupa',
+      trophy_platinum: 'Platin kupa',
       waiting: 'Bilgisayarınızda CouchSubs uygulamasını açın.',
       waitingHint: 'Uygulama bu TV\'yi bulup altyazıları buraya gönderecek.',
       panelTitle: 'CouchSubs',
@@ -31,6 +35,10 @@
       demoHint: 'Örnek: oyunun İngilizce altyazısı Türkçe olarak burada görünür. Çıkmak için Geri.'
     },
     en: {
+      trophy_bronze: 'Bronze trophy',
+      trophy_silver: 'Silver trophy',
+      trophy_gold: 'Gold trophy',
+      trophy_platinum: 'Platinum trophy',
       waiting: 'Open the CouchSubs app on your computer.',
       waitingHint: 'The app will find this TV and send subtitles here.',
       panelTitle: 'CouchSubs',

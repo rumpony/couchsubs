@@ -1185,6 +1185,22 @@
         }
       }
     },
+    "Get my npsso": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Get my npsso"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "npsso'mu al"
+          }
+        }
+      }
+    },
     "IP address, e.g. 192.168.1.20": {
       "localizations": {
         "en": {
@@ -1905,6 +1921,22 @@
         }
       }
     },
+    "Optional. Trophies you earn while playing appear for a few seconds in the corner of the TV. Uses your own PSN account's npsso cookie, only to read trophies; it is stored in the Keychain.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Optional. Trophies you earn while playing appear for a few seconds in the corner of the TV. Uses your own PSN account's npsso cookie, only to read trophies; it is stored in the Keychain."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İsteğe bağlı. Oynarken kazandığınız kupalar birkaç saniye TV'nin köşesinde görünür. Yalnız kupaları okumak için kendi PSN hesabınızın npsso çerezini kullanır; çerez Anahtarlık'ta saklanır."
+          }
+        }
+      }
+    },
     "Over the English subtitle": {
       "localizations": {
         "en": {
@@ -1933,6 +1965,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "PS5"
+          }
+        }
+      }
+    },
+    "PSN did not accept this cookie.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PSN did not accept this cookie."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PSN bu çerezi kabul etmedi."
           }
         }
       }
@@ -2321,6 +2369,22 @@
         }
       }
     },
+    "Show trophies on the TV": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show trophies on the TV"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kupaları TV'de göster"
+          }
+        }
+      }
+    },
     "Sign in": {
       "localizations": {
         "en": {
@@ -2349,6 +2413,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Yeniden giriş yap"
+          }
+        }
+      }
+    },
+    "Sign in at playstation.com in your browser with your own account, then open the link below and copy the value of npsso.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign in at playstation.com in your browser with your own account, then open the link below and copy the value of npsso."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tarayıcıda playstation.com'a kendi hesabınızla girin, sonra aşağıdaki bağlantıyı açıp npsso değerini kopyalayın."
           }
         }
       }
@@ -2397,6 +2477,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "İkinci hesapla giriş yapın"
+          }
+        }
+      }
+    },
+    "Sign out": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign out"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çıkış yap"
           }
         }
       }
@@ -2797,6 +2893,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "PS5 bağlantıyı reddetti. PS5'i yeniden kurun."
+          }
+        }
+      }
+    },
+    "The PSN cookie has expired. Paste a new one.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The PSN cookie has expired. Paste a new one."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PSN çerezinin süresi doldu. Yenisini yapıştırın."
           }
         }
       }
@@ -3293,6 +3405,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Çeviri modeli: OPUS-MT, Helsinki Üniversitesi (CC BY 4.0)."
+          }
+        }
+      }
+    },
+    "Trophy alerts": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trophy alerts"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kupa bildirimleri"
           }
         }
       }

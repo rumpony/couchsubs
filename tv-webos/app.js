@@ -140,6 +140,24 @@
     previousTimer = setTimeout(hidePrevious, PREVIOUS_HOLD_MS);
   }
 
+  // --- Trophies ---
+  // The computer sends a trophy the player just earned; it is shown for a few seconds in the top right corner.
+
+  var trophyTimer = null;
+
+  function showTrophy(data) {
+    if (!data.name) return;
+    var grade = ['bronze', 'silver', 'gold', 'platinum'].indexOf(data.grade) >= 0 ? data.grade : 'bronze';
+    $('trophy-grade').textContent = t('trophy_' + grade);
+    $('trophy-name').textContent = data.name;
+    $('trophy-game').textContent = data.game || '';
+    var icon = $('trophy-icon');
+    if (data.icon) { icon.src = data.icon; icon.className = ''; } else { icon.removeAttribute('src'); icon.className = 'hidden'; }
+    $('trophy').className = grade;
+    clearTimeout(trophyTimer);
+    trophyTimer = setTimeout(function () { $('trophy').className = 'hidden'; }, data.duration || 6000);
+  }
+
   function hidePrevious() {
     clearTimeout(previousTimer);
     $('subtitle-prev').className = 'hidden';
@@ -318,6 +336,7 @@
     onEvent('style', applyStyle);
     onEvent('speech', function (data) { if (data.url) playSpeech(server + data.url); });
     onEvent('speech-stop', stopSpeech);
+    onEvent('trophy', showTrophy);
   }
 
   // --- Türkçe dublaj ---

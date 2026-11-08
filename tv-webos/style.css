@@ -174,3 +174,29 @@ html, body {
 }
 #demo-badge.hidden { display: none; }
 #demo-badge b { display: block; color: #F5B83D; font-size: 26px; margin-bottom: 4px; }
+
+/* Trophy card: top right, away from the subtitle at the bottom. */
+#trophy {
+  position: absolute;
+  top: 6%;
+  right: 4%;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  max-width: 640px;
+  padding: 18px 28px 18px 18px;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.78);
+}
+#trophy.hidden { display: none; }
+#trophy-icon { width: 88px; height: 88px; border-radius: 8px; flex: none; }
+#trophy-icon.hidden { display: none; }
+.trophy-text { min-width: 0; }
+#trophy-grade { font-size: 24px; text-transform: uppercase; letter-spacing: 2px; }
+#trophy-name { font-size: 36px; font-weight: bold; line-height: 1.2; }
+#trophy-game { font-size: 24px; opacity: 0.7; }
+#trophy.bronze #trophy-grade { color: #e0a070; }
+#trophy.silver #trophy-grade { color: #d8dde3; }
+#trophy.gold #trophy-grade { color: #f2c94c; }
+#trophy.platinum #trophy-grade { color: #b9d8ff; }

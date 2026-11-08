@@ -79,6 +79,7 @@ struct SettingsView: View {
                         }
                     }
                     DeepLCard()
+                    TrophyCard()
                     Card(title: "Subtitle area") {
                         RegionPicker(region: $model.settings.region, frame: model.lastFrame)
                         HintText(text: "Adjust the frame so it covers where the game shows its subtitles.")
@@ -230,6 +231,52 @@ struct RegionPicker: View {
                 }
             }
             Button("Reset area") { region = CropRegion() }.buttonStyle(.secondary)
+        }
+    }
+}
+
+struct TrophyCard: View {
+    @Environment(AppModel.self) private var model
+    @State private var cookie = ""
+    @State private var checking = false
+    @State private var failed = false
+
+    var body: some View {
+        @Bindable var model = model
+        Card(title: "Trophy alerts") {
+            HintText(text: "Optional. Trophies you earn while playing appear for a few seconds in the corner of the TV. Uses your own PSN account's npsso cookie, only to read trophies; it is stored in the Keychain.")
+            if model.hasTrophyCookie && !model.trophyCookieExpired {
+                Toggle("Show trophies on the TV", isOn: $model.settings.trophyAlerts)
+                Button("Sign out") { model.removeTrophyCookie() }
+                    .buttonStyle(.secondary)
+            } else {
+                if model.trophyCookieExpired {
+                    Text("The PSN cookie has expired. Paste a new one.")
+                        .font(.csCallout)
+                        .foregroundStyle(Color.csWarning)
+                }
+                HStack(spacing: Theme.space("m")) {
+                    SecureField(text: $cookie) { Text(verbatim: "npsso") }.textFieldStyle(.roundedBorder)
+                    Button("Save and test") {
+                        checking = true
+                        Task {
+                            failed = !(await model.setTrophyCookie(cookie))
+                            if !failed { cookie = "" }
+                            checking = false
+                        }
+                    }
+                    .buttonStyle(.secondary)
+                    .disabled(checking || cookie.trimmingCharacters(in: .whitespaces).isEmpty)
+                }
+                HintText(text: "Sign in at playstation.com in your browser with your own account, then open the link below and copy the value of npsso.")
+                Link("Get my npsso", destination: URL(string: "https://ca.account.sony.com/api/v1/ssocookie")!)
+                    .font(.csCallout)
+                if failed {
+                    Text("PSN did not accept this cookie.")
+                        .font(.csCallout)
+                        .foregroundStyle(Color.csWarning)
+                }
+            }
         }
     }
 }
