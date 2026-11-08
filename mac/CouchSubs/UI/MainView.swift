@@ -81,7 +81,7 @@ struct MainView: View {
                 }
             }
             if model.history.entries.count > 1 {
-                Card(title: "Earlier subtitles") {
+                Card(title: "Subtitle history") {
                     ScrollView {
                         LazyVStack(alignment: .leading, spacing: Theme.space("m")) {
                             ForEach(model.history.entries.dropFirst()) { entry in

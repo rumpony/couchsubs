@@ -1057,22 +1057,6 @@
         }
       }
     },
-    "Earlier subtitles": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Earlier subtitles"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Önceki altyazılar"
-          }
-        }
-      }
-    },
     "English": {
       "localizations": {
         "en": {
@@ -2589,6 +2573,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Altyazı alanı"
+          }
+        }
+      }
+    },
+    "Subtitle history": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Subtitle history"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Altyazı geçmişi"
           }
         }
       }
